@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Home() {
 	return (
@@ -9,7 +10,9 @@ export default function Home() {
 				</h1>
 				<p>Collection of tools to help with web development</p>
 				<div>
-					<Button>Tools</Button>
+					<Link href={"/word-counter"}>
+						<Button>Tools</Button>
+					</Link>
 				</div>
 			</div>
 		</div>
