@@ -8,10 +8,16 @@ import { ChangeEvent, useState } from "react";
 export default function WordCounter() {
 	const [textData, setTextData] = useState("");
 	const [wordsCounted, setWordsCounted] = useState(0);
+	const [characters, setCharacters] = useState(0);
 
 	const handleTextInput = (e: ChangeEvent<HTMLTextAreaElement>): void => {
-		setTextData(e.target.value);
-		setWordsCounted(textData.split(" ").length);
+		const input = e.target.value;
+		const totalWords = input.split(" ").filter((x) => x !== "").length;
+		const totalCharacters = input.split("").length;
+
+		setTextData(input);
+		setWordsCounted(totalWords);
+		setCharacters(totalCharacters);
 	};
 
 	return (
@@ -23,13 +29,14 @@ export default function WordCounter() {
 					area
 				</p>
 			</div>
-			<Card className="bg-zinc-400">
+			<Card>
 				<CardContent className="grid gap-4 py-4">
 					<div className="grid w-full gap-1.5">
-						<Label htmlFor="inputText">Enter text data</Label>
+						<Label htmlFor="inputText" className="mb-2">
+							Enter text data
+						</Label>
 						<Textarea
 							className="min-h-[200px]"
-							placeholder="Type your message here."
 							id="inputText"
 							onChange={handleTextInput}
 							value={textData}
@@ -43,6 +50,13 @@ export default function WordCounter() {
 									<p className="mt-0.5 text-xs">Total words</p>
 								</div>
 								<div className="font-semibold">{wordsCounted}</div>
+							</div>
+							<div className="flex items-center justify-between gap-3 py-2">
+								<div>
+									<h4>Characters</h4>
+									<p className="mt-0.5 text-xs">Total characters</p>
+								</div>
+								<div className="font-semibold">{characters}</div>
 							</div>
 						</CardContent>
 					</Card>
