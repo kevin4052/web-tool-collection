@@ -1,24 +1,21 @@
 "use client";
 
+import InputTextArea from "@/components/input-text-area";
 import { Card, CardContent } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { ChangeEvent, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function WordCounter() {
 	const [textData, setTextData] = useState("");
 	const [wordsCounted, setWordsCounted] = useState(0);
 	const [characters, setCharacters] = useState(0);
 
-	const handleTextInput = (e: ChangeEvent<HTMLTextAreaElement>): void => {
-		const input = e.target.value;
-		const totalWords = input.split(" ").filter((x) => x !== "").length;
-		const totalCharacters = input.split("").length;
+	useEffect(() => {
+		const totalWords = textData.split(" ").filter((x) => x !== "").length;
+		const totalCharacters = textData.length;
 
-		setTextData(input);
 		setWordsCounted(totalWords);
 		setCharacters(totalCharacters);
-	};
+	}, [textData]);
 
 	return (
 		<div className="min-h-screen mx-8">
@@ -30,18 +27,12 @@ export default function WordCounter() {
 				</p>
 			</div>
 			<Card>
-				<CardContent className="grid gap-4 py-4">
-					<div className="grid w-full gap-1.5">
-						<Label htmlFor="inputText" className="mb-2">
-							Enter text data
-						</Label>
-						<Textarea
-							className="min-h-[200px]"
-							id="inputText"
-							onChange={handleTextInput}
-							value={textData}
-						/>
-					</div>
+				<CardContent className="grid grid-cols-4 gap-4 py-4">
+					<InputTextArea
+						title="Enter text data"
+						textValue={textData}
+						onTextChange={(value) => setTextData(value)}
+					/>
 					<Card>
 						<CardContent>
 							<div className="flex items-center justify-between gap-3 py-2">
