@@ -2,16 +2,19 @@ import { CircleX, Copy } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 type Props = {
 	title: string;
 	textValue: string;
+	className: string;
 	onTextChange: (input: string) => void;
 };
 
 export default function InputTextArea({
 	title = "",
 	textValue = "",
+	className = "",
 	onTextChange,
 }: Props) {
 	const [value, setValue] = useState(textValue);
@@ -21,7 +24,7 @@ export default function InputTextArea({
 	}, [value, onTextChange]);
 
 	return (
-		<div className="grid w-full gap-1.5 col-span-3">
+		<div className={cn("grid gap-1.5", className)}>
 			<div className="flex pr-2">
 				<Label htmlFor="inputText" className="mb-2 flex-1">
 					{title}

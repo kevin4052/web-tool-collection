@@ -10,7 +10,7 @@ export default function Home() {
 				</h1>
 				<p>Collection of tools to help with web development</p>
 				<div>
-					<Link href={"/word-counter"}>
+					<Link href={"/tools/word-counter"}>
 						<Button>Tools</Button>
 					</Link>
 				</div>
