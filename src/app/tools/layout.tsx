@@ -7,7 +7,7 @@ export default function ToolsLayout({
 }: {
 	children: React.ReactNode;
 }) {
-	const [isOpen, setIsOpen] = useState(true);
+	const [isOpen, setIsOpen] = useState(false);
 
 	const handleSideNavToggle = () => {
 		setIsOpen(!isOpen);

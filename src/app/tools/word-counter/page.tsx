@@ -37,7 +37,7 @@ export default function WordCounter() {
 	}, [textData]);
 
 	return (
-		<div className="min-h-screen w-full mx-auto max-w-[1680px] flex flex-col px-8">
+		<div className="min-h-screen w-full mx-auto max-w-[1680px] flex flex-col md:px-6 px-3">
 			<div className="flex flex-col my-8">
 				<h3 className="font-semibold text-2xl">Word Counter</h3>
 				<p>
@@ -46,18 +46,18 @@ export default function WordCounter() {
 				</p>
 			</div>
 			<Card>
-				<CardContent className="flex gap-4 py-4">
+				<CardContent className="flex md:flex-row flex-col gap-4 py-4 ">
 					<InputTextArea
 						title="Enter text data"
 						textValue={textData}
 						onTextChange={(value) => setTextData(value)}
 						className="flex-1"
 					/>
-					<Card>
-						<CardContent className="col-span-1">
-							{counterStats.map((counter: counterStats) => {
+					<Card className="min-h-fit md:w-48 w-full pt-2">
+						<CardContent>
+							{counterStats.map((counter: counterStats, index: number) => {
 								return (
-									<>
+									<div key={counter.Title}>
 										<div className="flex items-center justify-between gap-3 py-2">
 											<div>
 												<h4>{counter.Title}</h4>
@@ -65,8 +65,8 @@ export default function WordCounter() {
 											</div>
 											<div className="font-semibold">{counter.Value}</div>
 										</div>
-										<Separator />
-									</>
+										{index !== counterStats.length - 1 && <Separator />}
+									</div>
 								);
 							})}
 						</CardContent>
