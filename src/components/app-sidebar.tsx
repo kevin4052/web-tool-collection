@@ -8,49 +8,42 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import {
-	CalendarIcon,
-	HomeIcon,
-	InboxIcon,
-	LucideProps,
-	SearchIcon,
-	SettingsIcon,
-} from "lucide-react";
+import { HomeIcon, LetterTextIcon, LucideProps } from "lucide-react";
+import Link from "next/link";
 
-type Item = {
-	title: string;
+type Tool = {
+	name: string;
 	url: string;
+};
+
+type ToolGroup = {
+	title: string;
+	tools: Tool[];
 	icon: React.ForwardRefExoticComponent<
 		Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
 	>;
 };
 
-// Menu items.
-const items: Item[] = [
+const toolGroups: ToolGroup[] = [
 	{
-		title: "Home",
-		url: "#",
+		title: "Text",
+		tools: [
+			{
+				name: "Word Counter",
+				url: "/tools/word-counter",
+			},
+		],
+		icon: LetterTextIcon,
+	},
+	{
+		title: "Test",
+		tools: [
+			{
+				name: "Word Counter test",
+				url: "/tools/word-counter",
+			},
+		],
 		icon: HomeIcon,
-	},
-	{
-		title: "Inbox",
-		url: "#",
-		icon: InboxIcon,
-	},
-	{
-		title: "Calendar",
-		url: "#",
-		icon: CalendarIcon,
-	},
-	{
-		title: "Search",
-		url: "#",
-		icon: SearchIcon,
-	},
-	{
-		title: "Settings",
-		url: "#",
-		icon: SettingsIcon,
 	},
 ];
 
@@ -58,23 +51,24 @@ export function AppSidebar() {
 	return (
 		<Sidebar>
 			<SidebarContent>
-				<SidebarGroup>
-					<SidebarGroupLabel>Application</SidebarGroupLabel>
-					<SidebarGroupContent>
-						<SidebarMenu>
-							{items.map((item) => (
-								<SidebarMenuItem key={item.title}>
-									<SidebarMenuButton asChild>
-										<a href={item.url}>
-											<item.icon />
-											<span>{item.title}</span>
-										</a>
-									</SidebarMenuButton>
-								</SidebarMenuItem>
-							))}
-						</SidebarMenu>
-					</SidebarGroupContent>
-				</SidebarGroup>
+				{toolGroups.map((toolGroup: ToolGroup) => (
+					<SidebarGroup key={toolGroup.title}>
+						<SidebarGroupLabel>{toolGroup.title}</SidebarGroupLabel>
+						<SidebarGroupContent>
+							<SidebarMenu>
+								{toolGroup.tools.map((tool) => (
+									<SidebarMenuItem key={tool.name}>
+										<SidebarMenuButton asChild>
+											<Link href={tool.url}>
+												<span>{tool.name}</span>
+											</Link>
+										</SidebarMenuButton>
+									</SidebarMenuItem>
+								))}
+							</SidebarMenu>
+						</SidebarGroupContent>
+					</SidebarGroup>
+				))}
 			</SidebarContent>
 		</Sidebar>
 	);

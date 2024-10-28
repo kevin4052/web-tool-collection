@@ -5,7 +5,7 @@ import React, { ReactNode } from "react";
 export default function Landinglayout({ children }: { children: ReactNode }) {
 	return (
 		<div>
-			<NavBar />
+			<NavBar useSideBarToggle={false} />
 			<main>{children}</main>
 			<Footer />
 		</div>

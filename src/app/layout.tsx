@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { SidebarProvider } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
 
 export const metadata: Metadata = {
 	title: "Web Tools Collection",
@@ -23,13 +21,7 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<SidebarProvider defaultOpen={false}>
-						<AppSidebar />
-						<main>
-							{/* <SidebarTrigger /> */}
-							{children}
-						</main>
-					</SidebarProvider>
+					{children}
 				</ThemeProvider>
 			</body>
 		</html>

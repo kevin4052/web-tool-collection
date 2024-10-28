@@ -1,8 +1,8 @@
 "use client";
-import SideNav from "@/app/tools/_components/SideNav";
+import { AppSidebar } from "@/components/app-sidebar";
 import { Footer } from "@/components/footer";
 import { NavBar } from "@/components/nav-bar";
-import { SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 export default function ToolsLayout({
 	children,
@@ -11,14 +11,14 @@ export default function ToolsLayout({
 }) {
 	return (
 		<div className="flex">
-			<main className="flex flex-col flex-1">
-				<div className="flex items-center">
-					<SidebarTrigger />
-					<NavBar />
-				</div>
-				{children}
-				<Footer />
-			</main>
+			<SidebarProvider>
+				<AppSidebar />
+				<main className="flex flex-col flex-1">
+					<NavBar useSideBarToggle={true} />
+					{children}
+					<Footer />
+				</main>
+			</SidebarProvider>
 		</div>
 	);
 }
