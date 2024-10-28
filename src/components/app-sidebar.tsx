@@ -8,7 +8,7 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { HomeIcon, LetterTextIcon, LucideProps } from "lucide-react";
+import { AtomIcon, LetterTextIcon, LucideProps } from "lucide-react";
 import Link from "next/link";
 
 type Tool = {
@@ -36,14 +36,14 @@ const toolGroups: ToolGroup[] = [
 		icon: LetterTextIcon,
 	},
 	{
-		title: "Test",
+		title: "Generators",
 		tools: [
 			{
-				name: "Word Counter test",
-				url: "/tools/word-counter",
+				name: "UUID Generator",
+				url: "/tools/uuid-generator",
 			},
 		],
-		icon: HomeIcon,
+		icon: AtomIcon,
 	},
 ];
 
@@ -53,7 +53,10 @@ export function AppSidebar() {
 			<SidebarContent>
 				{toolGroups.map((toolGroup: ToolGroup) => (
 					<SidebarGroup key={toolGroup.title}>
-						<SidebarGroupLabel>{toolGroup.title}</SidebarGroupLabel>
+						<SidebarGroupLabel>
+							<toolGroup.icon className="w-6 h-6 mr-2" />
+							{toolGroup.title}
+						</SidebarGroupLabel>
 						<SidebarGroupContent>
 							<SidebarMenu>
 								{toolGroup.tools.map((tool) => (
