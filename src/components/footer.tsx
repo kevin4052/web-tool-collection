@@ -2,11 +2,7 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { CopyrightIcon } from "lucide-react";
 import Link from "next/link";
 
-type Props = {
-	siteName: string;
-};
-
-export function Footer({ siteName }: Props) {
+export function Footer() {
 	const currentYear = new Date().getFullYear();
 	return (
 		<footer className="flex py-3 px-2 border-t-2">
@@ -15,7 +11,7 @@ export function Footer({ siteName }: Props) {
 					<CopyrightIcon className="w-3 h-3" />
 				</span>
 				<span>{currentYear}</span>
-				{siteName}
+				Web Tools Collection
 			</div>
 			<div className="flex items-center p-4 gap-2">
 				<Link
