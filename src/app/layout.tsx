@@ -5,7 +5,7 @@ import { NavBar } from "@/components/nav-bar";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-	title: "Web Tool Collection",
+	title: "Web Tools Collection",
 	description: "Collection of tools to help with web development",
 };
 
@@ -25,7 +25,7 @@ export default function RootLayout({
 				>
 					<NavBar />
 					<main>{children}</main>
-					<Footer />
+					<Footer siteName={metadata.title as string} />
 				</ThemeProvider>
 			</body>
 		</html>
