@@ -41,7 +41,7 @@ export default function InputTextArea({
 				/>
 			</div>
 			<Textarea
-				className="min-h-[200px]"
+				className="min-h-[200px] bg-background dark:bg-background"
 				id="inputText"
 				value={value}
 				onChange={(e) => setValue(e.target.value)}

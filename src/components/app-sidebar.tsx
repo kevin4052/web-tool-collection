@@ -32,6 +32,10 @@ const toolGroups: ToolGroup[] = [
 				name: "Word Counter",
 				url: "/tools/word-counter",
 			},
+			{
+				name: "ASCII Converter",
+				url: "/tools/ascii-converter",
+			},
 		],
 		icon: LetterTextIcon,
 	},
