@@ -8,7 +8,7 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { AtomIcon, LetterTextIcon, LucideProps } from "lucide-react";
+import { AtomIcon, CogIcon, LetterTextIcon, LucideProps } from "lucide-react";
 import Link from "next/link";
 
 type Tool = {
@@ -44,6 +44,16 @@ const toolGroups: ToolGroup[] = [
 			},
 		],
 		icon: AtomIcon,
+	},
+	{
+		title: "Converters",
+		tools: [
+			{
+				name: "ASCII Converter",
+				url: "/tools/ascii-converter",
+			},
+		],
+		icon: CogIcon,
 	},
 ];
 

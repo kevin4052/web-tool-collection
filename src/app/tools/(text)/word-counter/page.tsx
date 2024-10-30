@@ -46,7 +46,7 @@ export default function WordCounter() {
 				</p>
 			</div>
 			<Card>
-				<CardContent className="flex md:flex-row flex-col gap-4 py-4 ">
+				<CardContent className="flex md:flex-row flex-col gap-4 py-4">
 					<InputTextArea
 						title="Enter text data"
 						textValue={textData}

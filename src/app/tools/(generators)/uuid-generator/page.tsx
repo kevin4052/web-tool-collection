@@ -23,8 +23,8 @@ export default function UuidPage() {
 		setOutputText(uuids.join("\n"));
 	};
 
-	const handleQuantity = (event: React.ChangeEvent<HTMLInputElement>) => {
-		const num = Number(event.target.value);
+	const handleQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const num = Number(e.target.value);
 		setQuantity(num);
 	};
 
