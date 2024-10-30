@@ -1,18 +1,17 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import React, { useState } from "react";
+import InputComponent from "@/components/input";
+import React, { useEffect, useState } from "react";
+import ReadyOnlyTextArea from "@/components/readonly-test-area";
 
 export default function AsciiConverterPage() {
 	const [input, setInput] = useState("");
 	const [output, setOutput] = useState("");
 
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-		const value = e.target.value;
-		setInput(value);
-		setOutput(toAscii(value));
-	};
+	useEffect(() => {
+		setOutput(toAscii(input));
+	}, [input]);
 
 	const toAscii = (inputValue: string): string => {
 		let result = "";
@@ -33,17 +32,19 @@ export default function AsciiConverterPage() {
 			</div>
 			<Card>
 				<CardContent className="flex flex-col gap-4 py-4">
-					<Input
+					<InputComponent
 						title="Input"
-						value={input}
-						onChange={handleInputChange}
-						className="flex-1 bg-background dark:bg-background"
+						textValue={input}
+						onTextChange={(value) => setInput(value)}
+						className="flex-1"
+						hideCopy={true}
 					/>
-					<Input
+					<ReadyOnlyTextArea
 						title="Output"
-						value={output}
-						className="flex-1 bg-background dark:bg-background"
-						readOnly
+						textValue={output}
+						onTextChange={setOutput}
+						className=""
+						hideclear={true}
 					/>
 				</CardContent>
 			</Card>
