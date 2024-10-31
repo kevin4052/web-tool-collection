@@ -4,6 +4,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import InputComponent from "@/components/input";
 import React, { useEffect, useState } from "react";
 import ReadyOnlyTextArea from "@/components/readonly-test-area";
+import ToolWrapper from "@/app/tools/_components/tool-wrapper";
+
+const toolData = {
+	name: "ASCII Converter",
+	description: "Converters input text into ASCII code",
+};
 
 export default function AsciiConverterPage() {
 	const [input, setInput] = useState("");
@@ -25,11 +31,7 @@ export default function AsciiConverterPage() {
 	};
 
 	return (
-		<div className="min-h-screen w-full mx-auto max-w-[1680px] flex flex-col md:px-6 px-3">
-			<div className="flex flex-col my-8">
-				<h3 className="font-semibold text-2xl">ASCII Converter</h3>
-				<p>Converters input text into ASCII code</p>
-			</div>
+		<ToolWrapper name={toolData.name} description={toolData.description}>
 			<Card>
 				<CardContent className="flex flex-col gap-4 py-4">
 					<InputComponent
@@ -48,6 +50,6 @@ export default function AsciiConverterPage() {
 					/>
 				</CardContent>
 			</Card>
-		</div>
+		</ToolWrapper>
 	);
 }

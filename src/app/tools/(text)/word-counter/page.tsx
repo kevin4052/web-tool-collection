@@ -4,11 +4,18 @@ import InputTextArea from "@/components/input-text-area";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useEffect, useState } from "react";
+import ToolWrapper from "@/app/tools/_components/tool-wrapper";
 
 type counterStats = {
 	Title: string;
 	Description: string;
 	Value: number;
+};
+
+const toolData = {
+	name: "Word Counter",
+	description:
+		"Counts the number of words and characters that are typed in the text area",
 };
 
 export default function WordCounter() {
@@ -37,14 +44,7 @@ export default function WordCounter() {
 	}, [textData]);
 
 	return (
-		<div className="min-h-screen w-full mx-auto max-w-[1680px] flex flex-col md:px-6 px-3">
-			<div className="flex flex-col my-8">
-				<h3 className="font-semibold text-2xl">Word Counter</h3>
-				<p>
-					Counts the number of words and characters that are typed in the text
-					area
-				</p>
-			</div>
+		<ToolWrapper name={toolData.name} description={toolData.description}>
 			<Card>
 				<CardContent className="flex md:flex-row flex-col gap-4 py-4">
 					<InputTextArea
@@ -73,6 +73,6 @@ export default function WordCounter() {
 					</Card>
 				</CardContent>
 			</Card>
-		</div>
+		</ToolWrapper>
 	);
 }
