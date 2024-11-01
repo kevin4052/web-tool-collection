@@ -32,6 +32,10 @@ const toolGroups: ToolGroup[] = [
 				name: "Word Counter",
 				url: "/tools/word-counter",
 			},
+			{
+				name: "Text DIFF Checker",
+				url: "/tools/diff-viewer",
+			},
 		],
 		icon: LetterTextIcon,
 	},

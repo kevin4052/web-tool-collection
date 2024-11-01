@@ -49,7 +49,7 @@ export default function InputComponent({
 				)}
 			</div>
 			<Input
-				className="min-h-6 bg-background dark:bg-background"
+				className="min-h-6 bg-background dark:bg-background shadow-sm"
 				value={value}
 				onChange={(e) => setValue(e.target.value)}
 			/>

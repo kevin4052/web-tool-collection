@@ -40,7 +40,7 @@ export default function ReadyOnlyTextArea({
 				)}
 			</div>
 			<Textarea
-				className="min-h-[200px] bg-background dark:bg-background"
+				className="min-h-[200px] bg-background dark:bg-background shadow-sm"
 				id="inputText"
 				value={textValue}
 				readOnly={true}

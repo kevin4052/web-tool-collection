@@ -9,6 +9,7 @@ type Props = {
 	textValue: string;
 	className: string;
 	readonly?: boolean;
+	resize?: boolean;
 	onTextChange: (input: string) => void;
 };
 
@@ -17,6 +18,7 @@ export default function InputTextArea({
 	textValue = "",
 	className = "",
 	readonly = false,
+	resize = true,
 	onTextChange,
 }: Props) {
 	const [value, setValue] = useState(textValue);
@@ -41,7 +43,9 @@ export default function InputTextArea({
 				/>
 			</div>
 			<Textarea
-				className="min-h-[200px] bg-background dark:bg-background"
+				className={`min-h-[250px] bg-background dark:bg-background shadow-sm ${
+					!resize && "resize-none"
+				}`}
 				id="inputText"
 				value={value}
 				onChange={(e) => setValue(e.target.value)}

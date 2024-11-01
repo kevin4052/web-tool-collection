@@ -7,6 +7,12 @@ import { Input } from "@/components/ui/input";
 import { SparklesIcon } from "lucide-react";
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import ToolWrapper from "@/app/tools/_components/tool-wrapper";
+
+const toolData = {
+	name: "UUID Generator",
+	description: "Generate UUID for version 4",
+};
 
 export default function UuidPage() {
 	const [quantity, setQuantity] = useState(1);
@@ -29,11 +35,7 @@ export default function UuidPage() {
 	};
 
 	return (
-		<div className="min-h-screen w-full mx-auto max-w-[1680px] flex flex-col md:px-6 px-3">
-			<div className="flex flex-col my-8">
-				<h3 className="font-semibold text-2xl">UUID Generator</h3>
-				<p>Generate UUID for version 4.</p>
-			</div>
+		<ToolWrapper name={toolData.name} description={toolData.description}>
 			<Card>
 				<CardContent className="flex flex-col gap-4 py-4 ">
 					<div className="flex flex-col mb-4">
@@ -64,6 +66,6 @@ export default function UuidPage() {
 					/>
 				</CardContent>
 			</Card>
-		</div>
+		</ToolWrapper>
 	);
 }
