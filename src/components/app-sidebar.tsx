@@ -3,13 +3,16 @@ import {
 	SidebarContent,
 	SidebarGroup,
 	SidebarGroupContent,
-	SidebarGroupLabel,
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
+	SidebarMenuSub,
+	SidebarMenuSubButton,
+	SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 import { AtomIcon, CogIcon, LetterTextIcon, LucideProps } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type Tool = {
 	name: string;
@@ -46,6 +49,10 @@ const toolGroups: ToolGroup[] = [
 				name: "UUID Generator",
 				url: "/tools/uuid-generator",
 			},
+			{
+				name: "QR Code Generator",
+				url: "/tools/qrcode-generator",
+			},
 		],
 		icon: AtomIcon,
 	},
@@ -62,30 +69,39 @@ const toolGroups: ToolGroup[] = [
 ];
 
 export function AppSidebar() {
+	const pathName = usePathname();
 	return (
 		<Sidebar>
 			<SidebarContent>
-				{toolGroups.map((toolGroup: ToolGroup) => (
-					<SidebarGroup key={toolGroup.title}>
-						<SidebarGroupLabel>
-							<toolGroup.icon className="w-6 h-6 mr-2" />
-							{toolGroup.title}
-						</SidebarGroupLabel>
-						<SidebarGroupContent>
-							<SidebarMenu>
-								{toolGroup.tools.map((tool) => (
-									<SidebarMenuItem key={tool.name}>
-										<SidebarMenuButton asChild>
-											<Link href={tool.url}>
-												<span>{tool.name}</span>
-											</Link>
-										</SidebarMenuButton>
-									</SidebarMenuItem>
-								))}
-							</SidebarMenu>
-						</SidebarGroupContent>
-					</SidebarGroup>
-				))}
+				<SidebarGroup>
+					<SidebarGroupContent>
+						<SidebarMenu>
+							{toolGroups.map((toolGroup) => (
+								<SidebarMenuItem key={toolGroup.title}>
+									<SidebarMenuButton>
+										<toolGroup.icon className="w-6 h-6" />
+										{toolGroup.title}
+									</SidebarMenuButton>
+									<SidebarMenuSub>
+										{toolGroup.tools.map((tool) => (
+											<SidebarMenuSubItem key={tool.name}>
+												<SidebarMenuSubButton
+													className={`${
+														pathName === tool.url && "bg-sidebar-accent"
+													} `}
+												>
+													<Link href={tool.url}>
+														<span>{tool.name}</span>
+													</Link>
+												</SidebarMenuSubButton>
+											</SidebarMenuSubItem>
+										))}
+									</SidebarMenuSub>
+								</SidebarMenuItem>
+							))}
+						</SidebarMenu>
+					</SidebarGroupContent>
+				</SidebarGroup>
 			</SidebarContent>
 		</Sidebar>
 	);

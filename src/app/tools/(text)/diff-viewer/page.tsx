@@ -36,9 +36,9 @@ export default function DiffViewerPage() {
 
 	return (
 		<ToolWrapper name={toolData.name} description={toolData.description}>
-			<Card>
+			<Card className="mb-4">
 				<CardContent className="flex flex-col gap-4 py-4">
-					<div className="flex flex-row gap-4">
+					<div className="flex sm:flex-row flex-col gap-4">
 						<InputTextArea
 							title="Original text"
 							textValue={text1}
