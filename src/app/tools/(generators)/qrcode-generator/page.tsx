@@ -46,21 +46,12 @@ export default function QrCodeGenerator() {
 		const img = new Image();
 
 		img.onload = () => {
-			const borderSize = 10;
-			const borderColor = "#ffffff";
-
-			canvas.width = img.width + 2 * borderSize;
-			canvas.height = img.height + 2 * borderSize;
-
-			ctx!.fillStyle = borderColor;
+			canvas.width = imageSize[0];
+			canvas.height = imageSize[0];
 			ctx!.fillRect(0, 0, canvas.width, canvas.height);
-
-			const xPosition = (canvas.width - img.width) / 2;
-			const yPosition = (canvas.height - img.height) / 2;
-			ctx!.drawImage(img, xPosition, yPosition);
+			ctx!.drawImage(img, 0, 0);
 
 			const pngFile = canvas.toDataURL("image/png");
-
 			downloadStringAsFile(pngFile, "qrcode.png");
 		};
 
@@ -150,17 +141,18 @@ export default function QrCodeGenerator() {
 					<div className="w-full md:w-[400px]">
 						<Card className="mb-4">
 							<CardContent className="p-4">
-								<div className="aspect-square flex justify-center items-center">
+								<div>
 									{input && (
 										<QRCodeSVG
 											ref={svgRef}
 											value={input}
 											size={imageSize[0]}
+											width={"100%"}
+											height={"100%"}
 											level={"L"}
 											bgColor={"#FFFFFF"}
 											fgColor={"#000000"}
 											marginSize={margin[0]}
-											className="aspect-square h-[300px] md:h-[380px]"
 											id="qrSvg"
 										/>
 									)}
