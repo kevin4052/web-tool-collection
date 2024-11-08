@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import ToolWrapper from "../../_components/tool-wrapper";
+import ToolWrapper from "@/app/tools/_components/tool-wrapper";
 import { Card, CardContent } from "@/components/ui/card";
 import InputTextArea from "@/components/input-text-area";
 import { QRCodeSVG } from "qrcode.react";
@@ -86,8 +86,8 @@ export default function QrCodeGenerator() {
 		if (svgNode === null) {
 			return;
 		}
-		const svgData = new XMLSerializer().serializeToString(svgNode);
 
+		const svgData = new XMLSerializer().serializeToString(svgNode);
 		switch (fileType) {
 			case "SVG":
 				downloadSVG(svgData);

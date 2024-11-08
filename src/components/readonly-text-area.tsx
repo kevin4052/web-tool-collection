@@ -2,7 +2,7 @@ import { CircleX, Copy } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { Badge } from "./ui/badge";
+import { Badge } from "@/components/ui/badge";
 
 type Props = {
 	title: string;
@@ -27,7 +27,9 @@ export default function ReadyOnlyTextArea({
 				<Label htmlFor="inputText" className="mb-2 flex-1">
 					{title}
 				</Label>
-				<Badge variant="outline">Read-Only</Badge>
+				<Badge variant="outline" className="bg-warning text-warning-foreground">
+					Read-Only
+				</Badge>
 				{!hideCopy && (
 					<Copy
 						className="w-6 h-6 hover:cursor-pointer"

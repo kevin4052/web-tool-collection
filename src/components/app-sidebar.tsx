@@ -10,13 +10,21 @@ import {
 	SidebarMenuSubButton,
 	SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import { AtomIcon, CogIcon, LetterTextIcon, LucideProps } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import {
+	AtomIcon,
+	CogIcon,
+	LetterTextIcon,
+	LucideProps,
+	ScanTextIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 type Tool = {
 	name: string;
 	url: string;
+	status: "new" | "inprocess" | "normal";
 };
 
 type ToolGroup = {
@@ -34,10 +42,12 @@ const toolGroups: ToolGroup[] = [
 			{
 				name: "Word Counter",
 				url: "/tools/word-counter",
+				status: "normal",
 			},
 			{
 				name: "Text DIFF Checker",
 				url: "/tools/diff-viewer",
+				status: "normal",
 			},
 		],
 		icon: LetterTextIcon,
@@ -48,10 +58,12 @@ const toolGroups: ToolGroup[] = [
 			{
 				name: "UUID Generator",
 				url: "/tools/uuid-generator",
+				status: "normal",
 			},
 			{
 				name: "QR Code Generator",
 				url: "/tools/qrcode-generator",
+				status: "new",
 			},
 		],
 		icon: AtomIcon,
@@ -62,9 +74,21 @@ const toolGroups: ToolGroup[] = [
 			{
 				name: "ASCII Converter",
 				url: "/tools/ascii-converter",
+				status: "normal",
 			},
 		],
 		icon: CogIcon,
+	},
+	{
+		title: "Formatters",
+		tools: [
+			{
+				name: "JSON formatter",
+				url: "/tools/json-formatter",
+				status: "inprocess",
+			},
+		],
+		icon: ScanTextIcon,
 	},
 ];
 
@@ -90,8 +114,20 @@ export function AppSidebar() {
 														pathName === tool.url && "bg-sidebar-accent"
 													} `}
 												>
-													<Link href={tool.url}>
-														<span>{tool.name}</span>
+													<Link href={tool.url} className="w-full flex">
+														<span className="flex-1">{tool.name}</span>
+														{tool.status !== "normal" && (
+															<Badge
+																variant="outline"
+																className={`${
+																	tool.status === "new"
+																		? "bg-green-500"
+																		: "bg-yellow-500"
+																} text-warning-foreground`}
+															>
+																{tool.status}
+															</Badge>
+														)}
 													</Link>
 												</SidebarMenuSubButton>
 											</SidebarMenuSubItem>

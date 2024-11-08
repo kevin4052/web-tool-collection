@@ -3,7 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import InputComponent from "@/components/input";
 import React, { useEffect, useState } from "react";
-import ReadyOnlyTextArea from "@/components/readonly-test-area";
+import ReadyOnlyTextArea from "@/components/readonly-text-area";
 import ToolWrapper from "@/app/tools/_components/tool-wrapper";
 
 const toolData = {

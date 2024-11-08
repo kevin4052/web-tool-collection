@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import ReactDiffViewer from "react-diff-viewer-continued";
-import ToolWrapper from "../../_components/tool-wrapper";
+import ToolWrapper from "@/app/tools/_components/tool-wrapper";
 import { Card, CardContent } from "@/components/ui/card";
 import InputTextArea from "@/components/input-text-area";
 import { Button } from "@/components/ui/button";

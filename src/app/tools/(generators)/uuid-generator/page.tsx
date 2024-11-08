@@ -1,6 +1,6 @@
 "use client";
 
-import ReadyOnlyTextArea from "@/components/readonly-test-area";
+import ReadyOnlyTextArea from "@/components/readonly-text-area";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
