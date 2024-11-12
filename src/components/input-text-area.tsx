@@ -10,6 +10,7 @@ type Props = {
 	className: string;
 	readonly?: boolean;
 	resize?: boolean;
+	height?: "sm" | "md" | "lg" | "xl";
 	onTextChange: (input: string) => void;
 };
 
@@ -19,9 +20,16 @@ export default function InputTextArea({
 	className = "",
 	readonly = false,
 	resize = true,
+	height = "md",
 	onTextChange,
 }: Props) {
 	const [value, setValue] = useState(textValue);
+	const heights = {
+		sm: "min-h-[150px]",
+		md: "min-h-[250px]",
+		lg: "min-h-[400px]",
+		xl: "min-h-[500px]",
+	};
 
 	useEffect(() => {
 		onTextChange(value);
@@ -43,7 +51,9 @@ export default function InputTextArea({
 				/>
 			</div>
 			<Textarea
-				className={`min-h-[250px] bg-background dark:bg-background shadow-sm ${
+				className={`${
+					heights[height]
+				} bg-background dark:bg-background shadow-sm ${
 					!resize && "resize-none"
 				}`}
 				id="inputText"

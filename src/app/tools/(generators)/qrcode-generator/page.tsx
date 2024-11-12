@@ -102,6 +102,7 @@ export default function QrCodeGenerator() {
 							title="QR Code Text"
 							className=""
 							textValue={input}
+							height="sm"
 							onTextChange={(value) => setInput(value)}
 							resize={false}
 						/>

@@ -10,6 +10,8 @@ type Props = {
 	className: string;
 	hideCopy?: boolean;
 	hideclear?: boolean;
+	resize?: boolean;
+	height?: "sm" | "md" | "lg" | "xl";
 	onTextChange: (input: string) => void;
 };
 
@@ -19,11 +21,19 @@ export default function ReadyOnlyTextArea({
 	className = "",
 	hideCopy = false,
 	hideclear = false,
+	resize = true,
+	height = "md",
 	onTextChange,
 }: Props) {
+	const heights = {
+		sm: "min-h-[150px]",
+		md: "min-h-[250px]",
+		lg: "min-h-[400px]",
+		xl: "min-h-[500px]",
+	};
 	return (
 		<div className={cn("grid gap-1.5", className)}>
-			<div className="flex pr-2 gap-2">
+			<div className="flex pr-2 gap-2 h-fit">
 				<Label htmlFor="inputText" className="mb-2 flex-1">
 					{title}
 				</Label>
@@ -44,7 +54,11 @@ export default function ReadyOnlyTextArea({
 				)}
 			</div>
 			<Textarea
-				className="min-h-[200px] bg-background dark:bg-background shadow-sm"
+				className={`${
+					heights[height]
+				} bg-background dark:bg-background shadow-sm ${
+					!resize && "resize-none"
+				}`}
 				id="inputText"
 				value={textValue}
 				readOnly={true}
