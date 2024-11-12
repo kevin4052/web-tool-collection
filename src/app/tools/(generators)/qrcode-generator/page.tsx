@@ -102,9 +102,8 @@ export default function QrCodeGenerator() {
 							title="QR Code Text"
 							className=""
 							textValue={input}
-							height="sm"
+							height="xs"
 							onTextChange={(value) => setInput(value)}
-							resize={false}
 						/>
 						<Card>
 							<CardContent className="flex flex-col gap-4 py-4">
@@ -156,32 +155,6 @@ export default function QrCodeGenerator() {
 										/>
 									</div>
 								</div>
-							</CardContent>
-						</Card>
-					</div>
-					<div className="w-full md:w-[400px]">
-						<Card className="mb-4">
-							<CardContent className="p-4">
-								<div>
-									{input && (
-										<QRCodeSVG
-											ref={svgRef}
-											value={input}
-											size={imageSize[0]}
-											width={"100%"}
-											height={"100%"}
-											level={errorLvl}
-											bgColor={"#FFFFFF"}
-											fgColor={"#000000"}
-											marginSize={margin[0]}
-											id="qrSvg"
-										/>
-									)}
-								</div>
-							</CardContent>
-						</Card>
-						<Card>
-							<CardContent className="py-4">
 								<div>
 									<Label>Image Size</Label>
 									<div className="flex flex-row gap-4">
@@ -215,6 +188,28 @@ export default function QrCodeGenerator() {
 											<SelectItem value="PNG">png</SelectItem>
 										</SelectContent>
 									</Select>
+								</div>
+							</CardContent>
+						</Card>
+					</div>
+					<div className="w-full md:w-[400px]">
+						<Card className="mb-4">
+							<CardContent className="p-4">
+								<div>
+									{input && (
+										<QRCodeSVG
+											ref={svgRef}
+											value={input}
+											size={imageSize[0]}
+											width={"100%"}
+											height={"100%"}
+											level={errorLvl}
+											bgColor={"#FFFFFF"}
+											fgColor={"#000000"}
+											marginSize={margin[0]}
+											id="qrSvg"
+										/>
+									)}
 								</div>
 							</CardContent>
 						</Card>

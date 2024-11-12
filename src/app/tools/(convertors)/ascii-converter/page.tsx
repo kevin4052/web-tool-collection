@@ -47,6 +47,7 @@ export default function AsciiConverterPage() {
 						onTextChange={setOutput}
 						className=""
 						hideclear={true}
+						height="sm"
 					/>
 				</CardContent>
 			</Card>

@@ -54,7 +54,7 @@ export default function JSONFormatterPage() {
 							className="flex flex-row gap-4 py-2"
 							onValueChange={(value) => setSpaces(Number(value))}
 						>
-							{["2", "4", "6", "8"].map((spacing) => (
+							{["0", "2", "4", "6", "8"].map((spacing) => (
 								<div
 									className="flex items-center space-x-2"
 									key={`${spacing}indents`}
@@ -79,6 +79,7 @@ export default function JSONFormatterPage() {
 							textValue={text2}
 							className="flex-1"
 							height="xl"
+							hideclear
 							resize={false}
 							onTextChange={(value) => setText2(value)}
 						/>

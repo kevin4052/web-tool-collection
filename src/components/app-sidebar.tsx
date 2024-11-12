@@ -94,6 +94,11 @@ const toolGroups: ToolGroup[] = [
 
 export function AppSidebar() {
 	const pathName = usePathname();
+	const statusStyles = {
+		new: "bg-success text-success-foreground ",
+		inprocess: "bg-warning text-warning-foreground",
+		normal: "",
+	};
 	return (
 		<Sidebar>
 			<SidebarContent>
@@ -119,11 +124,7 @@ export function AppSidebar() {
 														{tool.status !== "normal" && (
 															<Badge
 																variant="outline"
-																className={`${
-																	tool.status === "new"
-																		? "bg-green-500"
-																		: "bg-yellow-500"
-																} text-warning-foreground`}
+																className={`${statusStyles[tool.status]}`}
 															>
 																{tool.status}
 															</Badge>

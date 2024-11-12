@@ -10,7 +10,7 @@ type Props = {
 	className: string;
 	readonly?: boolean;
 	resize?: boolean;
-	height?: "sm" | "md" | "lg" | "xl";
+	height?: "xs" | "sm" | "md" | "lg" | "xl";
 	onTextChange: (input: string) => void;
 };
 
@@ -25,6 +25,7 @@ export default function InputTextArea({
 }: Props) {
 	const [value, setValue] = useState(textValue);
 	const heights = {
+		xs: "min-h-[70px]",
 		sm: "min-h-[150px]",
 		md: "min-h-[250px]",
 		lg: "min-h-[400px]",

@@ -11,7 +11,7 @@ type Props = {
 	hideCopy?: boolean;
 	hideclear?: boolean;
 	resize?: boolean;
-	height?: "sm" | "md" | "lg" | "xl";
+	height?: "xs" | "sm" | "md" | "lg" | "xl";
 	onTextChange: (input: string) => void;
 };
 
@@ -26,6 +26,7 @@ export default function ReadyOnlyTextArea({
 	onTextChange,
 }: Props) {
 	const heights = {
+		xs: "min-h-[70px]",
 		sm: "min-h-[150px]",
 		md: "min-h-[250px]",
 		lg: "min-h-[400px]",
